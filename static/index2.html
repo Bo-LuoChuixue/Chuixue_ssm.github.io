@@ -2,63 +2,313 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的网页</title>
     <link href="NationalEmblem.ico" rel="shortcut icon" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 20px 0 30px;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            color: #c00;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+            line-height: 1.3;
+        }
+        
+        .header p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .slideshow-container:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+        
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: opacity 0.8s ease;
+        }
+        
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .slide-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .slide-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: #c00;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev {
+            left: 15px;
+        }
+        
+        .next {
+            right: 15px;
+        }
+        
+        .slideshow-container:hover .prev,
+        .slideshow-container:hover .next {
+            opacity: 0.9;
+        }
+        
+        .dot-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: #c00;
+            transform: scale(1.3);
+        }
+        
+        .status-indicator {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            .prev, .next {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                left: 5px !important;
+                right: 5px !important;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<center>
-    <h1 style="color: red;">大海航行靠舵手，万物生长靠太阳。</h1>
-    <div class="slideshow-container">
-        <img class="mySlides" src="Mao.webp" width="150" height="187.5">
-        <img class="mySlides" src="W020190330297350446108.jpg" width="150" height="187.5">
-        <img class="mySlides" src="1129174030_16698027250731n.jpg" width="150" height="187.5">
-        <img class="mySlides" src="Hu.webp" width="150" height="187.5">
-        <img class="mySlides" src="1122551729_15212817485941n.jpg" width="150" height="187.5">
-        <div class="prev" onclick="plusSlides(-1)">❮</div>
-        <div class="next" onclick="plusSlides(1)">❯</div>
+    <div class="header">
+    <h1>大海航行靠舵手，万物生长靠太阳！</h1>
     </div>
-</center>
-<style>
-    .mySlides {display:none;}
-    .slideshow-container {position: relative;}
-    .prev, .next {position: absolute; top: 50%; transform: translateY(-50%); font-size: 18px; font-weight: bold; padding: 10px; background-color: #000; color: #fff; cursor: pointer; opacity: 0; transition: opacity 0.3s;}
-    .prev:hover, .next:hover {opacity: 1;}
-    .next {right: 0; margin-right: 998px;}
-    .slideshow-container:hover .prev, .slideshow-container:hover .next {opacity: 0.5;}
-    .slideshow-container:hover .prev {margin-left: 998px;}
-    .slideshow-container:hover .next {margin-right: 998px;}
-</style>
-<script>
-    var myIndex = 0;
-    carousel();
+    <div class="slideshow-container" id="slideshow">
+        <img class="mySlides" src="Mao.webp" alt="毛泽东主席">
+        <div class="slide-content">
+        </div>
+        
+        <img class="mySlides" src="W020190330297350446108.jpg" alt="邓小平同志">
+        <div class="slide-content">
+        </div>
+        
+        <img class="mySlides" src="1129174030_16698027250731n.jpg" alt="江泽民同志">
+        <div class="slide-content">
+        </div>
+        
+        <img class="mySlides" src="Hu.webp" alt="胡锦涛同志">
+        <div class="slide-content">
+        </div>
+        
+        <img class="mySlides" src="1122551729_15212817485941n.jpg" alt="习近平主席">
+        <div class="slide-content">
+        </div>
+        
+        <button class="prev" onclick="plusSlides(-1)" aria-label="上一张">❮</button>
+        <button class="next" onclick="plusSlides(1)" aria-label="下一张">❯</button>
+    </div>
 
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    <div class="dot-container" id="dots-container"></div>
+    <div class="status-indicator" id="status"></div>
+
+    <script>
+        // 幻灯片初始化
+        let slideIndex = 0;
+        let slideInterval;
+        let isPaused = false;
+        
+        // DOM元素获取
+        const slideshow = document.getElementById('slideshow');
+        const statusIndicator = document.getElementById('status');
+        const dotsContainer = document.getElementById('dots-container');
+        
+        // 初始化幻灯片
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建指示点
+            createDots();
+            
+            // 启动自动轮播
+            startSlideShow();
+            
+            // 添加悬停事件监听
+            slideshow.addEventListener('mouseenter', pauseSlideShow);
+            slideshow.addEventListener('mouseleave', resumeSlideShow);
+        });
+        
+        // 创建底部指示点
+        function createDots() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement("span");
+                dot.className = "dot";
+                dot.setAttribute("onclick", `currentSlide(${i})`);
+                dotsContainer.appendChild(dot);
+            }
+            updateDots();
         }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}
-        x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 3000);
-    }
-
-    function plusSlides(n) {
-        showSlides(myIndex += n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) {myIndex = 1}
-        if (n < 1) {myIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+        
+        // 更新指示点状态
+        function updateDots() {
+            const dots = document.getElementsByClassName("dot");
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            dots[slideIndex].classList.add("active");
         }
-        x[myIndex-1].style.display = "block";
-    }
-</script>
+        
+        // 启动自动轮播
+        function startSlideShow() {
+            slideInterval = setInterval(showNextSlide, 3000);
+            isPaused = false;
+            statusIndicator.textContent = "自动轮播中... 悬停图片可暂停";
+            statusIndicator.style.color = "#666";
+        }
+        
+        // 暂停轮播
+        function pauseSlideShow() {
+            clearInterval(slideInterval);
+            isPaused = true;
+            statusIndicator.textContent = "轮播已暂停 - 移动鼠标可继续";
+            statusIndicator.style.color = "#c00";
+        }
+        
+        // 恢复轮播
+        function resumeSlideShow() {
+            if (isPaused) {
+                startSlideShow();
+            }
+        }
+        
+        // 显示下一张
+        function showNextSlide() {
+            plusSlides(1);
+        }
+        
+        // 切换幻灯片
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        // 定位到指定幻灯片
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        // 核心显示逻辑
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            const totalSlides = slides.length;
+            
+            // 处理边界情况
+            if (n >= totalSlides) slideIndex = 0;
+            if (n < 0) slideIndex = totalSlides - 1;
+            
+            // 隐藏所有幻灯片
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            // 显示当前幻灯片
+            slides[slideIndex].style.display = "block";
+            
+            // 更新指示点
+            updateDots();
+        }
+    </script>
 </body>
 </html>
-
