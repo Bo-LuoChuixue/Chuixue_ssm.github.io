@@ -6,6 +6,7 @@
     <title>我的网页</title>
     <link href="NationalEmblem.ico" rel="shortcut icon" type="image/x-icon">
     <style>
+        /* 全局重置和基础样式 */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,6 +24,7 @@
             color: #333;
         }
         
+        /* 标题区域样式 */
         .header {
             text-align: center;
             margin: 20px 0 30px;
@@ -45,11 +47,28 @@
             margin: 0 auto;
         }
         
+        /* 幻灯片外层容器 - 控制整体宽度 */
+        .slideshow-outer {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* 图片包装器 - 控制图片尺寸为原来的一半（400px） */
+        .slides-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* 幻灯片容器样式 */
         .slideshow-container {
             position: relative;
-            max-width: 800px;
             width: 100%;
-            margin: 0 auto;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -60,6 +79,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
         
+        /* 幻灯片图片样式 */
         .mySlides {
             display: none;
             width: 100%;
@@ -68,6 +88,7 @@
             transition: opacity 0.8s ease;
         }
         
+        /* 图片内容描述区域 */
         .slide-content {
             position: absolute;
             bottom: 0;
@@ -75,31 +96,33 @@
             right: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
             color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 0 0 12px 12px;
         }
         
         .slide-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
         }
         
         .slide-content p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             opacity: 0.9;
+            line-height: 1.4;
         }
         
+        /* 导航按钮样式 */
         .prev, .next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -116,30 +139,35 @@
             transform: translateY(-50%) scale(1.1);
         }
         
+        /* 按钮位置 - 移出图片区域以便更好显示 */
         .prev {
-            left: 15px;
+            left: -60px;
         }
         
         .next {
-            right: 15px;
+            right: -60px;
         }
         
+        /* 鼠标悬停在幻灯片上时显示按钮 */
         .slideshow-container:hover .prev,
         .slideshow-container:hover .next {
             opacity: 0.9;
         }
         
+        /* 底部指示点容器 */
         .dot-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            padding: 10px;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px;
+            max-width: 400px;
+            width: 100%;
         }
         
         .dot {
-            height: 12px;
-            width: 12px;
+            height: 10px;
+            width: 10px;
             background-color: #bbb;
             border-radius: 50%;
             cursor: pointer;
@@ -151,28 +179,45 @@
             transform: scale(1.3);
         }
         
+        /* 状态指示器 */
         .status-indicator {
             text-align: center;
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 8px;
+            font-size: 0.85rem;
+            margin-top: 6px;
             font-style: italic;
+            max-width: 400px;
+            width: 100%;
         }
         
+        /* 移动端适配 */
         @media (max-width: 600px) {
+            .slides-wrapper {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            
             .prev, .next {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                left: 5px !important;
-                right: 5px !important;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+                left: -50px !important;
+                right: -50px !important;
             }
             
             .header h1 {
                 font-size: 1.6rem;
             }
+            
+            .slide-content {
+                padding: 12px;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.2rem;
+            }
         }
-    </style>
+    </style>>
 </head>
 <body>
     <div class="header">
