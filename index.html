@@ -7,20 +7,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            // 1. 原有单选按钮“可取消选中”逻辑（保留）
-            $('input:radio[name="gender"]').click(function(){
-                var $radio = $(this);
-                if ($radio.data('waschecked') == true) {
-                    $radio.prop('checked', false);
-                    $radio.data('waschecked', false);
-                } else {
-                    $radio.data('waschecked', true);
-                }
-            });
+    // 1. 原有单选按钮“可取消选中”逻辑（保留）
+    $('input:radio[name="gender"]').click(function(){
+        var $radio = $(this);
+        if ($radio.data('waschecked') == true) {
+            $radio.prop('checked', false);
+            $radio.data('waschecked', false);
+        } else {
+            $radio.data('waschecked', true);
+        }
+    });
 
-            // 2. 新增：表格内所有链接点击跳转新页面
-            $('table a').attr('target', '_blank');
-        });
+    // 2. 表格内链接跳转新页面
+    $('table a').attr('target', '_blank');
+    
+    // 3. 顶部链接跳转新页面（选中.top-links下的所有<a>）
+    $('.top-links a').attr('target', '_blank');
+});
     </script>
 </head>
 <body>
@@ -38,10 +41,12 @@
     <input name="gender" type="radio">女
     <input name="gender" type="radio">沃尔玛塑料袋
     <br>
-    <a href="https://www.gov.cn/">中国政府网</a >
-    <a href="static/leader.html">中央领导同志简历</a >
+    <div class="top-links">
+    <a href="https://www.gov.cn/">中国政府网</a>
+    <a href="static/leader.html">中央领导同志简历</a>
     <br>
-    <a href="static/ssm.html">数据库学习</a >
+    <a href="static/ssm.html">数据库学习</a>
+</div>
     <br>
     <table border="1">
         <tr>
