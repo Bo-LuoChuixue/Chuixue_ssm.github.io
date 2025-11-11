@@ -15,11 +15,9 @@
     <script>
         // 图片点击播放函数
         function playSound() {
-            var audio = new Audio('VID_20231009233103.mp3'); // 图片对应音频路径
-            audio.play().catch(error => {
-                console.log("播放失败：" + err.message);
-            });
-        }
+    var audio = new Audio('VID_20231009233103.mp3'); // 确保文件在同目录
+    audio.play().catch(error => console.error("播放失败:", error));
+     }
 
         // 文字点击播放函数
         function playTextSound() {
