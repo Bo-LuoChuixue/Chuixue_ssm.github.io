@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="https://www.baidu.com/favicon.ico" type="image/x-icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        // 原有的单选按钮取消选中逻辑（可选保留）
         $(document).ready(function(){
             $('input:radio[name="gender"]').click(function(){
                 var $radio = $(this);
@@ -25,9 +26,12 @@
 <body>
 <center>
     <h1>Baidu百度</h1>
-    <form action="http://www.baidu.com/s" method="get" target="_blank">
-    <input type="text" size="40">
-    <input type="button" value="百度一下">
+    <!-- 修改表单：输入框添加name="wd"，按钮改为submit类型 -->
+    <form action="https://www.baidu.com/s" method="get" target="_blank">
+        <!-- 关键：输入框的name属性为"wd"，百度通过此参数接收搜索词 -->
+        <input type="text" name="wd" size="40" id="kw"> 
+        <!-- 关键：按钮类型改为submit，触发表单提交 -->
+        <input type="submit" value="百度一下"> 
     </form>
     <br>
     <input name="gender" type="radio">男
