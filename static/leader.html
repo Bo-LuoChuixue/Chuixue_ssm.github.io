@@ -13,17 +13,27 @@
         }
     </style>
     <script>
+        // 图片点击播放函数
         function playSound() {
-            var audio = new Audio('VID_20231009233103.mp3');
-            audio.play().catch(err => { // 兼容：捕获播放失败的错误（如浏览器策略）
-            console.log("播放失败：" + err.message);
+            var audio = new Audio('VID_20231009233103.mp3'); // 图片对应音频路径
+            audio.play().catch(error => {
+                console.log("播放失败：" + err.message);
+            });
+        }
+
+        // 文字点击播放函数
+        function playTextSound() {
+            var audio = new Audio('another_audio.mp3'); // 近平对应音频路径
+            audio.play().catch(error => {
+                console.error("音频播放失败:", error);
+            });
         }
     </script>
 </head>
 <body>
 <center>
     <h1>大海航行靠舵手，永远跟着
-        <span class="highlight" onclick="playSound()">
+        <span class="highlight" onclick="playTextSound()">
         <strong><em>近平</em></strong>
         </span>
         走！</h1>
